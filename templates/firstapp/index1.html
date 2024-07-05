@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index1.css' %}">
+</head>
+<body>
+<h1>Welcome to C-Mart</h1>
+<h2>Your Fashion is Our Only Passion</h2>
+    <div class="main" align="center">
+    <div class="signup">
+        <a class="s" href="/signup">Signup</a>
+    </div>
+    <div class="login">
+        <a class="l" href="/accounts/login">Login</a>
+    </div>
+</div>
+</body>
+</html>
+{% block body_block %}
+{% endblock %}

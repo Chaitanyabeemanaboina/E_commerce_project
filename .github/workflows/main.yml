@@ -1,0 +1,96 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/chaitanyabeemanaboina_ecommerce:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+  
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.8
+  
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+  
+    - name: Install PythonAnywhere CLI
+      run: |
+        pip install pythonanywhere
+    - name: Download pa_autoconfigure_django.py
+      run: |
+        wget https://raw.githubusercontent.com/pythonanywhere/helper_scripts/master/pa_autoconfigure_django.py
+    - name: Create wrapper script
+      run: |
+        echo "import os" > pa_autoconfigure_django_wrapper.py
+        echo "import subprocess" >> pa_autoconfigure_django_wrapper.py
+        echo "import sys" >> pa_autoconfigure_django_wrapper.py
+        echo "" >> pa_autoconfigure_django_wrapper.py
+        echo "# Ensure the PA_API_TOKEN is set" >> pa_autoconfigure_django_wrapper.py
+        echo "pa_api_token = os.getenv('PA_API_TOKEN')" >> pa_autoconfigure_django_wrapper.py
+        echo "if not pa_api_token:" >> pa_autoconfigure_django_wrapper.py
+        echo "    print('PA_API_TOKEN is not set!')" >> pa_autoconfigure_django_wrapper.py
+        echo "    sys.exit(1)" >> pa_autoconfigure_django_wrapper.py
+        echo "" >> pa_autoconfigure_django_wrapper.py
+        echo "# Run the pa_autoconfigure_django.py script with the provided arguments" >> pa_autoconfigure_django_wrapper.py
+        echo "command = [" >> pa_autoconfigure_django_wrapper.py
+        echo "    sys.executable," >> pa_autoconfigure_django_wrapper.py
+        echo "    'pa_autoconfigure_django.py'," >> pa_autoconfigure_django_wrapper.py
+        echo "    sys.argv[1]," >> pa_autoconfigure_django_wrapper.py
+        echo "    '--python', sys.argv[2]," >> pa_autoconfigure_django_wrapper.py
+        echo "    '--domain', sys.argv[3]," >> pa_autoconfigure_django_wrapper.py
+        echo "]" >> pa_autoconfigure_django_wrapper.py
+        echo "" >> pa_autoconfigure_django_wrapper.py
+        echo "# Include the --nuke argument if specified" >> pa_autoconfigure_django_wrapper.py
+        echo "if len(sys.argv) > 4 and sys.argv[4] == '--nuke':" >> pa_autoconfigure_django_wrapper.py
+        echo "    command.append('--nuke')" >> pa_autoconfigure_django_wrapper.py
+        echo "" >> pa_autoconfigure_django_wrapper.py
+        echo "# Execute the command" >> pa_autoconfigure_django_wrapper.py
+        echo "result = subprocess.run(command, env=os.environ)" >> pa_autoconfigure_django_wrapper.py
+        echo "" >> pa_autoconfigure_django_wrapper.py
+        echo "# Exit with the same code as the subprocess" >> pa_autoconfigure_django_wrapper.py
+        echo "sys.exit(result.returncode)" >> pa_autoconfigure_django_wrapper.py
+  
+    - name: Deploy to PythonAnywhere
+      env:
+        PA_API_TOKEN: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
+      run: |
+        export WORKON_HOME=~/.virtualenvs
+        echo "PA_API_TOKEN=${PA_API_TOKEN}"
+        
+        # Run the wrapper script
+        python pa_autoconfigure_django_wrapper.py https://github.com/Chaitanyabeemanaboina/E_commerce.git 3.10 Chaitanyabeemanaboina.pythonanywhere.com --nuke
+        pa_reload_webapp.py Chaitanyabeemanaboina.pythonanywhere.com --api-token=${PA_API_TOKEN}

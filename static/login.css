@@ -1,0 +1,62 @@
+body {
+    background-image: url('/static/images/homepage.jpg');
+    background-size: cover;
+
+}
+h1 {
+    color: white;
+    margin-top: 120px;
+    font-size: 80px;
+    font-family: fantasy;
+    text-decoration-line: underline;
+    margin-bottom:10px
+}
+form {
+    display: block;
+    min-height: 250px;
+    background-color: white;
+    padding: 20px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-radius: 20px;
+}
+p {
+    font-family: fantasy;
+    font-size: 20px;
+    color: black;
+}
+input[type="submit"] {
+    display: inline-block;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-family: fantasy;
+}
+a {
+    display: inline-block;
+    height: 30px;
+    background-color: white;
+    width: 150px;
+    color: black;
+    text-decoration-line: unset;
+    padding-top: 10px;
+    font-size: 20px;
+    font-family: fantasy;
+    border-radius: 10px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+a:hover{
+    transform:scale(1.5);
+    background-color:black;
+      color:white;
+}
+ul.errorlist.nonfield {
+    font-size: 20px;
+    font-family: fantasy;
+    text-decoration-line: underline;
+    color: black;
+}

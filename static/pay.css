@@ -1,0 +1,20 @@
+.p {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    margin-top: 60px;
+    height: 150px;
+    align-items: center;
+    font-size: 50px;
+    font-family: fantasy;
+}
+.p1 {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 150px;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+    font-family: fantasy;
+}

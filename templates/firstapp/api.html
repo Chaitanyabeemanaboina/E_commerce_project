@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'firstapp/index.html' %}
+{% block body_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'api.css' %}">
+</head>
+<div class="api1">
+    <div class="api2">
+        <h1 class="api3">C-Mart API's</h1>
+    <h3>We provide services to use our data,through our API system,which is integrated with API key structure.
+        In order to access our API's you should have the following things:</h3>
+        <h3>1.API Key</h3>
+       <h3>2.JWT Token</h3>
+        <h2>NOTE :</h2> <h3> 1. Which ever request you make through the API other than obtaining JWT Token and API Key,
+                  it is Mandatory to include API Key and JWT Token in the headers section.</h3>
+        <h3>   2. the response for all the requests is given in json data ,you need to convert it and use it.</h3>
+        <h3>   3. In order to perform get request you should a API Key,but to perform post ,update ,delete
+                  operations you should be an Admin user.</h3>
+    <h2>1.How to obtain the JWT Token ?</h2>
+     <h3> - You should become an Authenticated User, In order to be one you should first Sign up into our website.</>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/token/' ,you should perform a post request to this url.</h3>
+      <h3>- In this request you need to add your credentials, namely your username and password.</h3>
+    <h2>2.How to obtain the API Key ?</h2>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/api-key/', using this url you will get your API Key.</h3>
+      <h3>- Including JWT Token into headers section is mandatory,the name for the API Key
+        is set to your username by default.</h3>
+    <h2>* While doing All the below requests ,you need to follow all the instructios given in the NOTE section</h2>
+    <h2>3.How to get the record ?</h2>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/listapi/',perform get request to this url to get the list of items.</h3>
+    <h2>4.How to Create a record ?</h2>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/createapi/',perform post request to this url for creating an item.</h3>
+   <h2> 5.How to Update a record ?</h2>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/updateapi/1' ,perform update request to this url to update a item.</h3>
+        <h3>- here we used 1 in the url as an example ,you can use any id that you want to update ,in place of 1.</h3>
+    <h2>6.How to Delete a record ?</h2>
+      <h3>- URL - 'http://Chaitanyabeemanaboina.pythonanywhere.com/api/destroyapi/1' ,perform delete request to this url to delete a item.</h3>
+      <h3>- here we used 1 in the url as an example ,you can use any id that you want to delete ,in place of 1.</h3>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,140 @@
+body{
+    background-image: url('/static/images/innerimage1.jpg');
+    background-size: cover;
+}
+
+.navbar{
+       height: 60px;
+       display: flex;
+       border-radius: 10px;
+       margin-top:20px;
+}
+h1.logo {
+    display: inline-block;
+    margin: 0px;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-family: fantasy;
+    color: white;
+    text-decoration-line: unset;
+}
+.dropdown {
+    margin-left: 50px;
+    border: none;
+    color: white;
+    font-size: 30px;
+    font-family: fantasy;
+    text-decoration-line: unset;
+    background-color: unset;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.api {
+    display: inline-block;
+    color: white;
+    font-size: 30px;
+    font-family: fantasy;
+    margin-top: 13px;
+    margin-left: 50px;
+    text-decoration-line: unset;
+    margin-right:10px
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.search {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+}
+.search_input {
+    height: 35px;
+    width: 500px;
+    background-color: white;
+    border:none;
+}
+.search_button {
+    height: 38px;
+    width: 100px;
+    background: white;
+    color: black;
+    font-size: 20px;
+    font-family: fantasy;
+    border:none;
+}
+
+a.addtocart {
+    display: flex;
+    background-color: white;
+    height: 40px;
+    width: 130px;
+    margin-top: 10px;
+    margin-left: 40px;
+    text-decoration-line: unset;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: fantasy;
+    color: black;
+    border-radius:10px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.logout {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    background-color: white;
+    height: 40px;
+    width: 80px;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: fantasy;
+    text-decoration-line: unset;
+    color: black;
+    border: none;
+    border-radius:10px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.logout:hover{
+        transform:scale(1.5);
+}
+.addtocart:hover{
+        transform:scale(1.5);
+}
+.api:hover{
+        transform:scale(1.5);
+}
+.dropdown:hover{
+        transform:scale(1.5);
+}
+.getbill {
+    display: flex;
+    height: 40px;
+    width: 90px;
+    font-family: fantasy;
+    text-decoration-line: unset;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: black;
+    margin-top: 10px;
+    font-size: 20px;
+    margin-left: 40px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.getbill:hover{
+        transform:scale(1.5);
+}
+.user {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    font-family: math;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'firstapp/index.html' %}
+{% block body_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'bill1.css' %}">
+</head>
+<div class="billdiv"><h2 class="billname">Bill</h2></div>
+{% if prod %}
+<div class="main1">
+<div class="main" align="center">
+    {% for i in prod %}
+    <div id="info_{{i.id}}" class="info"><h2 class="name">{{i.name}}</h2>  <h2 class="prize">{{i.prize}}</h2>   <h2 class="quantity">{{i.quantity}}</h2>  <a class="cancel" id="{{i.id}}" href="#">Cancel</a></div>
+        {% endfor %}
+</div>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".cancel").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id");
+            console.log(itemId);
+            fetch(`/ec/cancel/${itemId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                   const info = document.getElementById(`info_${itemId}`);
+                   info.remove();
+                   console.log(data.sum);
+                   document.getElementById('sum').innerHTML = `Bill Total : ${data.sum}`;
+                   console.log(data.sum);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+   });
+    </script>
+</div>
+{% else %}
+<div class="else"><h2 class="else1">No items Added Yet</h2></div>
+{% endif %}
+<div class="sum"> <h2 id="sum" class="billsum">Bill Total : {{sum}}</h2> </div>
+<a id="pay" class="pay" href="/ec/pay">Pay</a>
+{% endblock %}

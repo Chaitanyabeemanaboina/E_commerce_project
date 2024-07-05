@@ -1,0 +1,71 @@
+/* static/styles.css */
+body {
+    background-image: url('/static/images/homepage.jpg');
+    background-size: cover;
+
+}
+        .signup {
+    height: 80px;
+    width: 400px;
+    padding-top: 40px;
+    background-color: white;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.s {
+    text-decoration-line: unset;
+    color: black;
+    font-size: 40px;
+    font-family: fantasy;
+}
+        .login {
+    background-color: black;
+    height: 80px;
+    width: 400px;
+    padding-top: 40px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+        .l {
+    text-decoration-line: unset;
+    color: white;
+    font-size: 40px;
+    font-family: fantasy;
+}
+
+.signup:hover{
+       transform:scale(1.5);
+}
+.login:hover{
+       transform:scale(1.5);
+}
+h2:hover{
+      background-color:black;
+      color:white;
+      transform:scale(1.5);
+}
+h1 {
+    font-size: 100px;
+    font-family: fantasy;
+    color: White;
+    padding-left: 100px;
+    margin-left: 250px;
+    margin-bottom: 0px;
+    margin-top: 100px;
+    text-decoration-line: underline;
+}
+h2 {
+    position: relative;
+    font-size: 40px;
+    font-family: fantasy;
+    padding-left: 250px;
+    color: black;
+    height: 60px;
+    background-color: white;
+    padding-top: 10px;
+    margin-left: 120px;
+    margin-right: 350px;
+    transition-property: all;
+    transition-duration: 0.75s;
+    left: 100px;
+}

@@ -1,0 +1,99 @@
+.main {
+    min-height: 400px;
+    min-width: 1000px;
+    background-color:white;
+    margin-right: 60px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 50px;
+    border-radius:10px
+}
+.info {
+    display: flex;
+    justify-content: space-around;
+    color: black;
+    background-color: white;
+    font-family: fantasy;
+}
+.main1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;s
+}
+.billname {
+    font-size: 100px;
+    margin-right: 30px;
+    font-family: fantasy;
+    color: white;
+    text-decoration-line: underline;
+    margin-top:20px;
+    margin-bottom: 30px;
+}
+.billdiv {
+    display: flex;
+    justify-content: center;
+}
+.cancel {
+    display: block;
+    text-decoration-line: unset;
+    font-size: 30px;
+    margin-top: 15px;
+    color: black;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.cancel:hover{
+           font-size:35px;
+}
+.billsum {
+    display: block;
+    position: relative;
+    left: 500px;
+    font-size: 70px;
+    color: white;
+    font-family: fantasy;
+    background-color: black;
+    width: 500px;
+    padding-left: 70px;
+    border-radius: 10px;
+    margin-top: 0px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+.billsum:hover{
+          background-color:white;
+          color:black
+}
+.else1 {
+    font-size: 100px;
+    font-family: fantasy;
+    color: white;
+    margin-top:0px;
+}
+.else {
+    display: flex;
+    justify-content: center;
+}
+h2.name {
+    font-family: fantasy;
+    color: black;
+    margin-top: 20px;
+}
+.pay {
+    display: flex;
+    position: relative;
+    left: 650px;
+    background-color: white;
+    height: 60px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: unset;
+    font-size: 30px;
+    color: black;
+    font-family: fantasy;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}

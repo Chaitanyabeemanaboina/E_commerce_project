@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% extends 'firstapp/index.html' %}
+{% block body_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'cat1.css' %}">
+</head>
+<div class="shop" align="center">
+    <div class="box">
+        {% for i in cat %}
+        <div class="data">
+            <img class="images" src="{{i.image.url}}" alt="Image" height="50px" width="50px">
+        <h2 class="name">{{i.name}}</h2>
+        <h2 class="prize">{{i.prize}}</h2>
+            <h2 class="quantity">
+                <a class="increase" id="increase_{{ i.id }}" href="#">+</a>
+                <span id="updt_{{ i.id }}">{{ i.quantity }}</span>
+                <a class="reduce" id="reduce_{{ i.id }}" href="#">-</a>
+            </h2>
+            <p>
+                <a class="add" id="add_{{ i.id }}" href="#">Add to Cart</a>
+                <a class="bill" id="bill_{{ i.id }}" href="#">Buy</a>
+            </p>
+            </div>
+        {% endfor %}
+    </div>
+<script type="text/javascript">
+    document.querySelectorAll(".increase").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id").split("_")[1];
+            console.log(itemId);
+            fetch(`/ec/buy/${itemId}/cat`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById(`updt_${itemId}`).innerHTML = data.quantity; // Update the specific item's quantity
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+
+    document.querySelectorAll(".reduce").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id").split("_")[1];
+            console.log(itemId);
+            fetch(`/ec/red/${itemId}/cat`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    document.getElementById(`updt_${itemId}`).innerHTML = data.quantity; // Update the specific item's quantity
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+
+    document.querySelectorAll(".add").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id").split("_")[1];
+            console.log(itemId);
+            fetch(`/ec/add/${itemId}/cat`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert('Item has been Added to the Cart');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+
+    document.querySelectorAll(".bill").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id").split("_")[1];
+            console.log(itemId);
+            fetch(`/ec/buy_bill/${itemId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert('Item has been added to the bill');
+                    document.getElementById(`updt_${itemId}`).innerHTML = data.quantity;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+</script>
+</div>
+{% endblock %}

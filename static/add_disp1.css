@@ -1,0 +1,99 @@
+.box {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.data {
+    background-color: white;
+    height: 540px;
+    width: 270px;
+    margin-top: 0px;
+    border-radius:10px;
+    transition-property:all;
+    transition-duration:0.75s;
+}
+img.images {
+    height: 280px;
+    width: 270px;
+}
+h2.name {
+    color: black;
+    font-family: fantasy;
+    margin-top:10px;
+}
+h2.prize {
+    font-family: fantasy;
+}
+h2.prize {
+    font-family: fantasy;
+    margin-bottom: 10px;
+}
+h2.quantity {
+    color: white;
+    background-color: black;
+    padding-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    height: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    border-radius: 10px;
+    font-size: 40px;
+}
+a.increase {
+    margin-right: 30px;
+    text-decoration-line: unset;
+    font-size: 30px;
+    color: white;
+}
+a.reduce {
+    margin-left: 25px;
+    font-size: 50px;
+    text-decoration-line: unset;
+    color: white;
+}
+p {
+    display: flex;
+    background-color: black;
+    height: 50px;
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+a.add {
+    display: inline-block;
+    margin-top: 15px;
+    margin-right: 40px;
+    text-decoration-line: unset;
+    color: white;
+    font-family: fantasy;
+    font-size: 20px;
+}
+a.bill {
+    display: inline-block;
+    font-size: 20px;
+    text-decoration-line: unset;
+    font-family: fantasy;
+    color: white;
+    transition-property:all;
+
+}
+.else1 {
+    font-size: 100px;
+    font-family: fantasy;
+    color: white;
+    margin-top:0px;
+}
+.else {
+    display: flex;
+    justify-content: center;
+}
+a.c {
+    font-size: 25px;
+    font-family: fantasy;
+    text-decoration-line: unset;
+    color: white;
+}

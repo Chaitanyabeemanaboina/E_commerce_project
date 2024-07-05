@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'firstapp/index.html' %}
+{% block body_block %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'add_disp1.css' %}">
+</head>
+<div class="shop" align="center">
+    {% if prod %}
+  <div class="box">
+        {% for i in prod %}
+        <div class="data" id="main_{{i.id}}" >
+            <img class="images" src="{{i.image.url}}" alt="Image" height="50px" width="50px">
+        <h2 class="name">{{i.name}}</h2>
+        <h2 class="prize">{{i.prize}}</h2>
+            <p>    <a class="c" id="{{i.id}}" href="#">Cancel</a>  </p>
+            </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+
+
+        document.querySelectorAll(".c").forEach(item => {
+        item.addEventListener("click", function(event) {
+            event.preventDefault();
+            const itemId = this.getAttribute("id");
+            console.log(itemId);
+            fetch(`/ec/cancel_add/${itemId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                   alert("Item has been Removed from the Cart");
+                   const main = document.getElementById(`main_${itemId}`);
+                   main.remove();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred.');
+            });
+        });
+    });
+
+
+    </script>
+    {% else %}
+<div class="else"><h2 class="else1">No items Added Yet</h2></div>
+{% endif %}
+</div>
+{% endblock %}

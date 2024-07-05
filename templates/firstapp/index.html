@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'indexpage.css' %}">
+</head>
+<body>
+<div class="navbar">
+    <h1 class="logo">C-Mart</h1>
+    <select class="dropdown" onchange="location = this.value;">
+        <option>All Categories</option>
+        <option value="http://127.0.0.1:8000/ec/cat/Sports">Sports</option>
+        <option value="http://127.0.0.1:8000/ec/cat/Groceries">Groceries</option>
+        <option value="http://127.0.0.1:8000/ec/cat/Cloths">Cloths</option>
+    </select>
+    <div class="API"><a class="api" href="/ec/api">API</a> </div>
+    <form class="search" action="/ec/search/" method="GET">
+        <input class="search_input" type="text" name="query" >
+        <button class="search_button" type="submit">Search</button>
+    </form>
+    <a class="addtocart" href="/ec/add_disp">Add To Cart</a>
+    <a class="getbill" href="/ec/bill">Get Bill</a>
+    <a class="logout" href="/ec/logout">Logout</a>
+</div>
+<div class="user" ><h1>Welcome {{user}}, Happy Shopping. </h1></div>
+</body>
+</html>
+{% block body_block %}
+{% endblock %}
