@@ -7,4 +7,4 @@
 - Authentication and Authorization:
   - This section is implemented using REST FRAMEWORK'S JWT TOKEN AUTHENTICATION. Every user when logs in ,will be provided a jwt token from there on the process proceeds.
 - As you have seen in the views section of the project we have used Mysql Queries , directly in the program to connect to the database.
- this handles inclusion of items into the database or the website  
+ this handles inclusion of items into the database or the website.

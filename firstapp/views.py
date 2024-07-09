@@ -41,7 +41,7 @@ def category(request,category=None):
                                 items_dict[key][4], items_dict[key][5], request.user.id])
             else:
                 user = users_list()
-                if request.user not in user:  # use not equal (!=) to in conditions as less as possible
+                if request.user not in user:  
                     for key in items_dict:
                         cursor.execute(
                             'insert into firstapp_products(name,prize,quantity,category,bill,add_to_cart,image,user_id) values(%s,%s,%s,%s,%s,%s,%s,%s)',
