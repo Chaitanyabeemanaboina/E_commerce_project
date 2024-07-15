@@ -1,9 +1,8 @@
 body {
     background-image: url('/static/images/homepage.jpg');
     background-size: cover;
-
 }
-h1 {
+.heading{
     color: white;
     margin-top: 120px;
     font-size: 80px;
@@ -11,7 +10,7 @@ h1 {
     text-decoration-line: underline;
     margin-bottom:10px
 }
-form {
+.form_page{
     display: block;
     min-height: 250px;
     background-color: white;
@@ -25,7 +24,7 @@ p {
     font-size: 20px;
     color: black;
 }
-input[type="submit"] {
+.inp_f{
     display: inline-block;
     width: 200px;
     height: 40px;
@@ -35,7 +34,7 @@ input[type="submit"] {
     font-size: 20px;
     font-family: fantasy;
 }
-a {
+.anc_form{
     display: inline-block;
     height: 30px;
     background-color: white;
@@ -49,7 +48,7 @@ a {
     transition-property:all;
     transition-duration:0.75s;
 }
-a:hover{
+.anc_form:hover{
     transform:scale(1.5);
     background-color:black;
       color:white;
