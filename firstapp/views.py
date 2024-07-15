@@ -62,7 +62,7 @@ def buy(request,id,name):
     prod = Products.objects.filter(name=value,user=request.user)
     return render(request, 'firstapp/search.html', {'prod': prod})
 @login_required
-def buy_bill(request,id):
+def buy_bill(request,id,name=None):
     prod = Products.objects.get(id=id,user=request.user)
     if not prod.bill:
         prod.bill = True
@@ -74,6 +74,8 @@ def buy_bill(request,id):
     if prod.bill == True and prod.quantity == 0:
         prod.quantity = 1
         prod.save()
+    if name == "search":
+        return render(request, 'firstapp/index.html')
     return JsonResponse({"status": "success","quantity":prod.quantity})
 @login_required
 def add_to_cart(request,id,name):

@@ -30,7 +30,7 @@ urlpatterns = [
     path('api/token/verify/',TokenVerifyView.as_view()),
     path('signup/',views.signup),
     path('accounts/',include('django.contrib.auth.urls')),
-    path('',views.index1),
+    path('i/',views.index1),
     path('logout/',views.logout)
 ]
 

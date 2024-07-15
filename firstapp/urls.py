@@ -11,7 +11,7 @@ urlpatterns = [
     path('add_disp/',views.add_disp),
     path('cancel_add/<int:id>',views.cancel_add),
     path('search/',views.search),
-    path('buy_bill/<int:id>',views.buy_bill),
+    path('buy_bill/<int:id>/<str:name>',views.buy_bill),
     path('pay/',views.pay),
     path('logout/',views.custom_logout_view),
     path('api/',views.api)

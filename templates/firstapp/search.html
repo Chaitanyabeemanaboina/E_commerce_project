@@ -12,9 +12,9 @@
             <img class="images" src="{{i.image.url}}" alt="Image" height="50px" width="50px">
         <h2 class="name">{{i.name}}</h2>
         <h2 class="prize">{{i.prize}}</h2>
-            <h2 class="quantity"> <a class="increase" href="/ec/buy/{{i.id}}/cat">+</a>{{i.quantity}} <a class="reduce" href="/ec/red/{{i.id}}/cat">-</a></h2>
+            <h2 class="quantity"> <a class="increase" href="/ec/buy/{{i.id}}/search">+</a>{{i.quantity}} <a class="reduce" href="/ec/red/{{i.id}}/search">-</a></h2>
         <p><a class="add" href="/ec/add/{{i.id}}/add_to_cart">Add to Cart</a>
-            <a class="bill" href="/ec/buy_bill/{{i.id}}">Buy</a></p>
+            <a class="bill" href="/ec/buy_bill/{{i.id}}/search">Buy</a></p>
 <!--        <a href="/ec/bill">Get Bill</a>-->
             </div>
         {% endfor %}
